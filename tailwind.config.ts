@@ -66,7 +66,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Add custom colors for the 3D theme
+				corp: {
+					'dark': '#0A0A0A',
+					'darker': '#000000',
+					'cyan': '#00FFFF',
+					'element': '#1A1A1A',
+					'deep-blue': '#001219',
 				}
+			},
+			backgroundImage: {
+				'radial-gradient': 'radial-gradient(circle, var(--tw-gradient-stops))',
+				'corp-gradient': 'radial-gradient(circle, #001219 0%, #000000 100%)',
+				'cyan-glow': 'radial-gradient(circle, rgba(0,255,255,0.2) 0%, rgba(0,0,0,0) 70%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -125,6 +138,18 @@ export default {
 				'spin-slow': {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { opacity: '0.5' },
+					'50%': { opacity: '1' }
+				},
+				'hover-rotate': {
+					'0%': { transform: 'rotateY(0deg)' },
+					'100%': { transform: 'rotateY(10deg)' }
 				}
 			},
 			animation: {
@@ -140,7 +165,18 @@ export default {
 				'slide-out-up': 'slide-out-up 0.5s ease-out forwards',
 				'slide-in-down': 'slide-in-down 0.5s ease-out forwards',
 				'slide-out-down': 'slide-out-down 0.5s ease-out forwards',
-				'spin-slow': 'spin-slow 8s linear infinite'
+				'spin-slow': 'spin-slow 8s linear infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'hover-rotate': 'hover-rotate 0.3s ease-out forwards'
+			},
+			fontFamily: {
+				'aeroport': ['Aeroport', 'sans-serif'],
+				'sans': ['Inter', 'sans-serif']
+			},
+			boxShadow: {
+				'glow': '0 0 15px rgba(0, 255, 255, 0.5)',
+				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)'
 			}
 		}
 	},

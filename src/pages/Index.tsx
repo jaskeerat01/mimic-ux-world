@@ -1,49 +1,16 @@
 
 import React, { useEffect } from "react";
-import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Features } from "@/components/Features";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
+import { Navbar3D } from "@/components/Navbar3D";
+import { Hero3D } from "@/components/Hero3D";
+import { About3D } from "@/components/About3D";
+import { Features3D } from "@/components/Features3D";
+import { Contact3D } from "@/components/Contact3D";
+import { Footer3D } from "@/components/Footer3D";
+import { ParticleBackground } from "@/components/ParticleBackground";
 
 const Index = () => {
   useEffect(() => {
-    // Preloading animations
-    const preloadAnimations = () => {
-      const animations = [
-        "fade-in",
-        "slide-in-up",
-        "slide-in-down",
-        "slide-in-left",
-        "slide-in-right",
-      ];
-      
-      // Create a hidden div with all animations for preloading
-      const preloadDiv = document.createElement("div");
-      preloadDiv.style.position = "absolute";
-      preloadDiv.style.width = "0";
-      preloadDiv.style.height = "0";
-      preloadDiv.style.opacity = "0";
-      preloadDiv.style.pointerEvents = "none";
-      
-      animations.forEach((animation) => {
-        const el = document.createElement("div");
-        el.classList.add(`animate-${animation}`);
-        preloadDiv.appendChild(el);
-      });
-      
-      document.body.appendChild(preloadDiv);
-      
-      // Remove after animations are loaded (5s should be enough)
-      setTimeout(() => {
-        document.body.removeChild(preloadDiv);
-      }, 5000);
-    };
-    
-    preloadAnimations();
-    
-    // Smooth scroll behavior 
+    // Smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -58,18 +25,33 @@ const Index = () => {
         }
       });
     });
+    
+    // Preload WebGL context
+    const preloadWebGL = () => {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (gl) {
+        console.log('WebGL preloaded successfully');
+      }
+    };
+    
+    preloadWebGL();
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
-      <Navbar />
+    <div className="min-h-screen bg-corp-dark overflow-hidden">
+      {/* Particle Background */}
+      <ParticleBackground />
+      
+      {/* Main Content */}
+      <Navbar3D />
       <main>
-        <Hero />
-        <About />
-        <Features />
-        <Contact />
+        <Hero3D />
+        <About3D />
+        <Features3D />
+        <Contact3D />
       </main>
-      <Footer />
+      <Footer3D />
     </div>
   );
 };
