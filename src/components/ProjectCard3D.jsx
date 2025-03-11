@@ -1,19 +1,10 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: string;
-  category: string;
-  link: string;
-}
-
-export function ProjectCard3D({ title, description, image, category, link }: ProjectCardProps) {
+function ProjectCard3D({ title, description, image, category, link }) {
   const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef(null);
   
   // Motion values for the tilt effect
   const x = useMotionValue(0);
@@ -36,7 +27,7 @@ export function ProjectCard3D({ title, description, image, category, link }: Pro
   const gradientY = useTransform(ySpring, [-0.5, 0.5], [0, 100]);
   
   // Handle card hover
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     
     const rect = cardRef.current.getBoundingClientRect();
@@ -153,3 +144,5 @@ export function ProjectCard3D({ title, description, image, category, link }: Pro
     </motion.div>
   );
 }
+
+export { ProjectCard3D };

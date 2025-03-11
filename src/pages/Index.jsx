@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Navbar3D } from "@/components/Navbar3D";
 import { Hero3D } from "@/components/Hero3D";
@@ -8,13 +7,6 @@ import { Contact3D } from "@/components/Contact3D";
 import { Footer3D } from "@/components/Footer3D";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { motion, AnimatePresence } from "framer-motion";
-
-declare global {
-  interface Window {
-    mouseX: number;
-    mouseY: number;
-  }
-}
 
 const Index = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -28,7 +20,7 @@ const Index = () => {
     window.mouseY = 0;
     
     // Mouse tracker for cursor effect
-    const updateMousePosition = (e: MouseEvent) => {
+    const updateMousePosition = (e) => {
       window.mouseX = e.clientX;
       window.mouseY = e.clientY;
       setCursorPosition({ x: e.clientX, y: e.clientY });
@@ -38,8 +30,6 @@ const Index = () => {
     
     // Check for hoverable elements
     const handleElementHover = () => {
-      const hoveredElements = document.querySelectorAll('a, button, input, textarea, .hover-trigger');
-      
       document.querySelectorAll('a, button, input, textarea, .hover-trigger').forEach(el => {
         el.addEventListener('mouseenter', () => setCursorHover(true));
         el.addEventListener('mouseleave', () => setCursorHover(false));
@@ -181,7 +171,7 @@ const Index = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => {
-          const audio = document.getElementById('ambient-sound') as HTMLAudioElement;
+          const audio = document.getElementById('ambient-sound');
           if (audio) {
             if (audio.paused) {
               audio.volume = 0.1;

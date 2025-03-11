@@ -1,23 +1,7 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
-interface AnimateInViewProps {
-  children: React.ReactNode;
-  className?: string;
-  threshold?: number;
-  delay?: number;
-  duration?: number;
-  animation: 
-    | "fade-in"
-    | "slide-in-up"
-    | "slide-in-down"
-    | "slide-in-left"
-    | "slide-in-right";
-  once?: boolean;
-}
-
-export function AnimateInView({
+function AnimateInView({
   children,
   className,
   threshold = 0.1,
@@ -25,8 +9,8 @@ export function AnimateInView({
   duration = 500,
   animation = "fade-in",
   once = true,
-}: AnimateInViewProps) {
-  const ref = useRef<HTMLDivElement>(null);
+}) {
+  const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -74,20 +58,13 @@ export function AnimateInView({
   );
 }
 
-interface SmoothScrollLinkProps {
-  to: string;
-  children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
-}
-
-export function SmoothScrollLink({
+function SmoothScrollLink({
   to,
   children,
   className,
   onClick,
-}: SmoothScrollLinkProps) {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+}) {
+  const handleClick = (e) => {
     e.preventDefault();
     onClick?.();
 
@@ -106,3 +83,5 @@ export function SmoothScrollLink({
     </a>
   );
 }
+
+export { AnimateInView, SmoothScrollLink };
